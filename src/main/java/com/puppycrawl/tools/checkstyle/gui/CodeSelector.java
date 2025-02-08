@@ -62,11 +62,7 @@ public class CodeSelector {
      * Set selection.
      */
     public void select() {
-        pModel.findSelectionPositions();
-        editor.setSelectedTextColor(Color.blue);
-        editor.requestFocusInWindow();
-        editor.setCaretPosition(pModel.getSelectionStart());
-        editor.moveCaretPosition(pModel.getSelectionEnd());
+        pModel.select(editor);
     }
 
 }

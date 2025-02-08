@@ -153,7 +153,7 @@ public final class ExecutableStatementCountCheck
             visitContainerNode(ast);
         }
         else if (TokenUtil.isOfType(ast, TokenTypes.SLIST)) {
-            visitSlist(ast);
+            context.visitSlist(ast);
         }
         else {
             throw new IllegalStateException(ast.toString());
@@ -194,29 +194,13 @@ public final class ExecutableStatementCountCheck
     }
 
     /**
-     * Process the end of a statement list.
-     *
-     * @param ast the token representing the statement list.
-     */
-    private void visitSlist(DetailAST ast) {
-        final DetailAST contextAST = context.getAST();
-        DetailAST parent = ast;
-        while (parent != null && !isContainerNode(parent)) {
-            parent = parent.getParent();
-        }
-        if (parent == contextAST) {
-            context.addCount(ast.getChildCount() / 2);
-        }
-    }
-
-    /**
      * Check if the node is of type ctor (compact or canonical),
      * instance/ static initializer, method definition or lambda.
      *
      * @param node AST node we are checking
      * @return true if node is of the given types
      */
-    private static boolean isContainerNode(DetailAST node) {
+    public static boolean isContainerNode(DetailAST node) {
         return TokenUtil.isOfType(node, TokenTypes.METHOD_DEF,
                 TokenTypes.LAMBDA, TokenTypes.CTOR_DEF, TokenTypes.INSTANCE_INIT,
                 TokenTypes.STATIC_INIT, TokenTypes.COMPACT_CTOR_DEF);
@@ -268,6 +252,21 @@ public final class ExecutableStatementCountCheck
         public int getCount() {
             return count;
         }
+
+		/**
+		 * Process the end of a statement list.
+		 * @param ast  the token representing the statement list.
+		 */
+		public void visitSlist(DetailAST ast) {
+			final DetailAST contextAST = getAST();
+			DetailAST parent = ast;
+			while (parent != null && !ExecutableStatementCountCheck.isContainerNode(parent)) {
+				parent = parent.getParent();
+			}
+			if (parent == contextAST) {
+				addCount(ast.getChildCount() / 2);
+			}
+		}
 
     }
 

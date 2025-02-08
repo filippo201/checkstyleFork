@@ -65,7 +65,8 @@ import com.puppycrawl.tools.checkstyle.api.SeverityLevelCounter;
  */
 public class CheckstyleAntTask extends Task {
 
-    /** Poor man's enum for an xml formatter. */
+    private CheckstyleAntTaskProduct checkstyleAntTaskProduct = new CheckstyleAntTaskProduct();
+	/** Poor man's enum for an xml formatter. */
     private static final String E_XML = "xml";
     /** Poor man's enum for a plain formatter. */
     private static final String E_PLAIN = "plain";
@@ -84,9 +85,6 @@ public class CheckstyleAntTask extends Task {
     /** Contains the formatters to log to. */
     private final List<Formatter> formatters = new ArrayList<>();
 
-    /** Contains the Properties to override. */
-    private final List<Property> overrideProps = new ArrayList<>();
-
     /** Name of file to check. */
     private String fileName;
 
@@ -98,9 +96,6 @@ public class CheckstyleAntTask extends Task {
 
     /** Property to set on violations. */
     private String failureProperty;
-
-    /** The name of the properties file. */
-    private File properties;
 
     /** The maximum number of errors that are tolerated. */
     private int maxErrors;
@@ -191,7 +186,7 @@ public class CheckstyleAntTask extends Task {
      * @param property the property to add
      */
     public void addProperty(Property property) {
-        overrideProps.add(property);
+        checkstyleAntTaskProduct.getOverrideProps().add(property);
     }
 
     /**
@@ -250,7 +245,7 @@ public class CheckstyleAntTask extends Task {
      * @param props the properties File to use
      */
     public void setProperties(File props) {
-        properties = props;
+        checkstyleAntTaskProduct.setProperties(props);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -377,7 +372,7 @@ public class CheckstyleAntTask extends Task {
     private RootModule createRootModule() {
         final RootModule rootModule;
         try {
-            final Properties props = createOverridingProperties();
+            final Properties props = checkstyleAntTaskProduct.createOverridingProperties(this);
             final ThreadModeSettings threadModeSettings =
                     ThreadModeSettings.SINGLE_THREAD_MODE_INSTANCE;
             final ConfigurationLoader.IgnoredModulesOptions ignoredModulesOptions;
@@ -406,42 +401,6 @@ public class CheckstyleAntTask extends Task {
                     + "config {%s}.", config), ex);
         }
         return rootModule;
-    }
-
-    /**
-     * Create the Properties object based on the arguments specified
-     * to the ANT task.
-     *
-     * @return the properties for property expansion
-     * @throws BuildException if the properties file could not be loaded.
-     */
-    private Properties createOverridingProperties() {
-        final Properties returnValue = new Properties();
-
-        // Load the properties file if specified
-        if (properties != null) {
-            try (InputStream inStream = Files.newInputStream(properties.toPath())) {
-                returnValue.load(inStream);
-            }
-            catch (final IOException ex) {
-                throw new BuildException("Error loading Properties file '"
-                        + properties + "'", ex, getLocation());
-            }
-        }
-
-        // override with Ant properties like ${basedir}
-        final Map<String, Object> antProps = getProject().getProperties();
-        for (Map.Entry<String, Object> entry : antProps.entrySet()) {
-            final String value = String.valueOf(entry.getValue());
-            returnValue.setProperty(entry.getKey(), value);
-        }
-
-        // override with properties specified in subelements
-        for (Property p : overrideProps) {
-            returnValue.setProperty(p.getKey(), p.getValue());
-        }
-
-        return returnValue;
     }
 
     /**
@@ -792,5 +751,11 @@ public class CheckstyleAntTask extends Task {
         }
 
     }
+
+	public Object clone() throws java.lang.CloneNotSupportedException {
+		CheckstyleAntTask clone = (CheckstyleAntTask) super.clone();
+		clone.checkstyleAntTaskProduct = (CheckstyleAntTaskProduct) this.checkstyleAntTaskProduct.clone();
+		return clone;
+	}
 
 }

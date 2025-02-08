@@ -77,19 +77,9 @@ import com.puppycrawl.tools.checkstyle.utils.XpathUtil;
  */
 public class XpathQueryGenerator {
 
-    /** The root ast. */
+    private XpathQueryGeneratorProduct xpathQueryGeneratorProduct;
+	/** The root ast. */
     private final DetailAST rootAst;
-    /** The line number of the element for which the query should be generated. */
-    private final int lineNumber;
-    /** The column number of the element for which the query should be generated. */
-    private final int columnNumber;
-    /** The token type of the element for which the query should be generated. Optional. */
-    private final int tokenType;
-    /** The {@code FileText} object, representing content of the file. */
-    private final FileText fileText;
-    /** The distance between tab stop position. */
-    private final int tabWidth;
-
     /**
      * Creates a new {@code XpathQueryGenerator} instance.
      *
@@ -127,12 +117,10 @@ public class XpathQueryGenerator {
      */
     public XpathQueryGenerator(DetailAST rootAst, int lineNumber, int columnNumber, int tokenType,
                                FileText fileText, int tabWidth) {
-        this.rootAst = rootAst;
-        this.lineNumber = lineNumber;
-        this.columnNumber = columnNumber;
-        this.tokenType = tokenType;
-        this.fileText = fileText;
-        this.tabWidth = tabWidth;
+        this.xpathQueryGeneratorProduct = new XpathQueryGeneratorProduct(lineNumber,
+										columnNumber, tokenType, fileText, tabWidth);
+		this.rootAst = rootAst;
+        
     }
 
     /**
@@ -238,7 +226,7 @@ public class XpathQueryGenerator {
         final List<DetailAST> result = new ArrayList<>();
         DetailAST curNode = rootAst;
         while (curNode != null) {
-            if (isMatchingByLineAndColumnAndTokenType(curNode)) {
+            if (xpathQueryGeneratorProduct.isMatchingByLineAndColumnAndTokenType(curNode)) {
                 result.add(curNode);
             }
             DetailAST toVisit = curNode.getFirstChild();
@@ -311,30 +299,6 @@ public class XpathQueryGenerator {
             next = next.getNextSibling();
         }
         return result;
-    }
-
-    /**
-     * Returns the column number with tabs expanded.
-     *
-     * @param ast {@code DetailAST} root ast
-     * @return the column number with tabs expanded
-     */
-    private int expandedTabColumn(DetailAST ast) {
-        return 1 + CommonUtil.lengthExpandedTabs(fileText.get(lineNumber - 1),
-                ast.getColumnNo(), tabWidth);
-    }
-
-    /**
-     * Checks if the given {@code DetailAST} node is matching line number, column number and token
-     * type.
-     *
-     * @param ast {@code DetailAST} ast element
-     * @return true if the given {@code DetailAST} node is matching
-     */
-    private boolean isMatchingByLineAndColumnAndTokenType(DetailAST ast) {
-        return ast.getLineNo() == lineNumber
-                && expandedTabColumn(ast) == columnNumber
-                && (tokenType == 0 || tokenType == ast.getType());
     }
 
     /**

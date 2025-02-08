@@ -103,7 +103,7 @@ public class LambdaHandler extends AbstractExpressionHandler {
             final int firstChildColumnNo = expandedTabsColumnNo(firstChild);
             final IndentLevel level = getIndent();
 
-            if (isNonAcceptableIndent(firstChildColumnNo, level)) {
+            if (level.isNonAcceptableIndent(firstChildColumnNo, this)) {
                 isLambdaCorrectlyIndented = false;
                 logError(firstChild, "arguments", firstChildColumnNo, level);
             }
@@ -115,19 +115,6 @@ public class LambdaHandler extends AbstractExpressionHandler {
         if (isLineWrappedLambda) {
             checkLineWrappedLambda(isSwitchRuleLambda, mainAstColumnNo);
         }
-    }
-
-    /**
-     * Checks that given indent is acceptable or not.
-     *
-     * @param astColumnNo indent value to check
-     * @param level indent level
-     * @return true if indent is not acceptable
-     */
-    private boolean isNonAcceptableIndent(int astColumnNo, IndentLevel level) {
-        return astColumnNo < level.getFirstIndentLevel()
-            || getIndentCheck().isForceStrictCondition()
-               && !level.isAcceptable(astColumnNo);
     }
 
     /**
@@ -157,7 +144,7 @@ public class LambdaHandler extends AbstractExpressionHandler {
                 getIndentCheck().getLineWrappingIndentation());
         }
 
-        if (isNonAcceptableIndent(mainAstColumnNo, level)) {
+        if (level.isNonAcceptableIndent(mainAstColumnNo, this)) {
             isLambdaCorrectlyIndented = false;
             logError(mainAst, "", mainAstColumnNo, level);
         }

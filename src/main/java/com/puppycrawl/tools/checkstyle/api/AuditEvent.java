@@ -19,6 +19,9 @@
 
 package com.puppycrawl.tools.checkstyle.api;
 
+import com.puppycrawl.tools.checkstyle.XMLLogger;
+import java.io.PrintWriter;
+
 /**
  * Raw event for audit.
  *
@@ -169,5 +172,13 @@ public final class AuditEvent {
     public Violation getViolation() {
         return violation;
     }
+
+	/**
+	 * Outputs the given event to the writer.
+	 * @param writer
+	 */
+	public void writeFileError(PrintWriter writer) {
+		violation.writeFileError(writer, this);
+	}
 
 }

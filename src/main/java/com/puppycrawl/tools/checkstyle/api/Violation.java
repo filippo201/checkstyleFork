@@ -19,12 +19,14 @@
 
 package com.puppycrawl.tools.checkstyle.api;
 
+import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
 
 import com.puppycrawl.tools.checkstyle.LocalizedMessage;
+import com.puppycrawl.tools.checkstyle.XMLLogger;
 import com.puppycrawl.tools.checkstyle.utils.UnmodifiableCollectionUtil;
 
 /**
@@ -441,5 +443,26 @@ public final class Violation
 
         return violation;
     }
+
+	/**
+	 * Outputs the given event to the writer.
+	 * @param writer
+	 * @param auditEvent
+	 */
+	public void writeFileError(PrintWriter writer, AuditEvent auditEvent) {
+		writer.print("<error" + " line=\"" + getLineNo() + "\"");
+		if (getColumnNo() > 0) {
+			writer.print(" column=\"" + getColumnNo() + "\"");
+		}
+		writer.print(" severity=\"" + auditEvent.getSeverityLevel().getName() + "\"");
+		writer.print(" message=\"" + XMLLogger.encode(getViolation()) + "\"");
+		writer.print(" source=\"");
+		if (getModuleId() == null) {
+			writer.print(XMLLogger.encode(getSourceName()));
+		} else {
+			writer.print(XMLLogger.encode(getModuleId()));
+		}
+		writer.println("\"/>");
+	}
 
 }

@@ -19,8 +19,9 @@
 
 package com.puppycrawl.tools.checkstyle.gui;
 
+import java.awt.Color;
 import java.util.List;
-
+import javax.swing.JTextArea;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.DetailNode;
 import com.puppycrawl.tools.checkstyle.utils.TokenUtil;
@@ -162,5 +163,17 @@ public class CodeSelectorPresentation {
         }
         return lastPosition;
     }
+
+	/**
+	 * Set selection.
+	 * @param editor
+	 */
+	public void select(JTextArea editor) {
+		findSelectionPositions();
+		editor.setSelectedTextColor(Color.blue);
+		editor.requestFocusInWindow();
+		editor.setCaretPosition(getSelectionStart());
+		editor.moveCaretPosition(getSelectionEnd());
+	}
 
 }

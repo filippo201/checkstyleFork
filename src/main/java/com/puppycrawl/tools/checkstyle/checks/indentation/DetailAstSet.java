@@ -31,15 +31,12 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  */
 public class DetailAstSet {
 
-    /**
+    private DetailAstSetProduct detailAstSetProduct = new DetailAstSetProduct();
+
+	/**
      * The instance of {@code IndentationCheck} used by this class.
      */
     private final IndentationCheck indentCheck;
-
-    /**
-     * Maps line numbers to their ast.
-     */
-    private final SortedMap<Integer, DetailAST> astLines = new TreeMap<>();
 
     /**
      * Construct an instance of this class with {@code IndentationCheck} parameters.
@@ -56,17 +53,7 @@ public class DetailAstSet {
      * @param ast   the ast to add
      */
     public void addAst(DetailAST ast) {
-        addLineWithAst(ast.getLineNo(), ast);
-    }
-
-    /**
-     * Map ast with their line number.
-     *
-     * @param lineNo    line number of ast to add
-     * @param ast       ast to add
-     */
-    private void addLineWithAst(int lineNo, DetailAST ast) {
-        astLines.put(lineNo, ast);
+        detailAstSetProduct.addLineWithAst(ast.getLineNo(), ast);
     }
 
     /**
@@ -77,7 +64,7 @@ public class DetailAstSet {
      */
     public Integer getStartColumn(int lineNum) {
         Integer startColumn = null;
-        final DetailAST ast = getAst(lineNum);
+        final DetailAST ast = detailAstSetProduct.getAst(lineNum);
 
         if (ast != null) {
             startColumn = expandedTabsColumnNo(ast);
@@ -92,7 +79,7 @@ public class DetailAstSet {
      * @return true if empty, false otherwise
      */
     public boolean isEmpty() {
-        return astLines.isEmpty();
+        return detailAstSetProduct.isEmpty();
     }
 
     /**
@@ -101,7 +88,7 @@ public class DetailAstSet {
      * @return first line in set of ast.
      */
     public DetailAST firstLine() {
-        return astLines.get(astLines.firstKey());
+        return detailAstSetProduct.firstLine();
     }
 
     /**
@@ -111,7 +98,7 @@ public class DetailAstSet {
      * @return          ast with their corresponding line number or null if no mapping is present
      */
     public DetailAST getAst(int lineNum) {
-        return astLines.get(lineNum);
+        return detailAstSetProduct.getAst(lineNum);
     }
 
     /**
@@ -120,7 +107,7 @@ public class DetailAstSet {
      * @return the line number of the last line
      */
     public Integer lastLine() {
-        return astLines.lastKey();
+        return detailAstSetProduct.lastLine();
     }
 
     /**
