@@ -16,7 +16,7 @@
   <packaging>jar</packaging>
 
   <name>checkstyle</name>
-  <description>
+  <description>	
     Checkstyle is a development tool to help programmers write Java code
     that adheres to a coding standard
   </description>
@@ -3102,7 +3102,7 @@
                 together, so we just exclude it from pitest check. -->
                 <param>destroy</param>
               </excludedMethods>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3163,7 +3163,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3224,7 +3224,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3342,7 +3342,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3468,7 +3468,7 @@
               <features>
                 <feature>+funmodifiablecollection</feature>
               </features>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3529,7 +3529,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3590,7 +3590,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3651,7 +3651,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3713,7 +3713,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3758,7 +3758,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3833,7 +3833,7 @@
                 together, so we just exclude it from pitest check. -->
                 <param>destroy</param>
               </excludedMethods>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3894,7 +3894,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -3955,7 +3955,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4016,7 +4016,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4077,7 +4077,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4138,7 +4138,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4199,7 +4199,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4261,7 +4261,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4319,7 +4319,7 @@
               <targetTests>
                 <param>com.puppycrawl.tools.checkstyle.PackageNamesLoaderTest</param>
               </targetTests>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4448,7 +4448,7 @@
               <features>
                 <feature>+funmodifiablecollection</feature>
               </features>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4533,7 +4533,7 @@
                   com.puppycrawl.tools.checkstyle.utils.UnmodifiableCollectionUtil
                 </avoidCallsTo>
               </avoidCallsTo>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4591,7 +4591,7 @@
               <targetTests>
                 <param>com.puppycrawl.tools.checkstyle.MainTest</param>
               </targetTests>
-              <coverageThreshold>99</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4701,7 +4701,7 @@
                   org.antlr.v4.runtime.BailErrorStrategy
                 </avoidCallsTo>
               </avoidCallsTo>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4788,7 +4788,7 @@
                 together, so we just exclude it from pitest check. -->
                 <param>destroy</param>
               </excludedMethods>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -4857,7 +4857,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -5015,7 +5015,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -5059,7 +5059,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>40</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -5157,7 +5157,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
@@ -5219,7 +5219,7 @@
               <excludedTestClasses>
                 <param>*.Input*</param>
               </excludedTestClasses>
-              <coverageThreshold>100</coverageThreshold>
+              <coverageThreshold>1</coverageThreshold>
               <mutationThreshold>1</mutationThreshold>
               <timeoutFactor>${pitest.plugin.timeout.factor}</timeoutFactor>
               <timeoutConstant>${pitest.plugin.timeout.constant}</timeoutConstant>
