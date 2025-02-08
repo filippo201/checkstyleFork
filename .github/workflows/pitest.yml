@@ -1,11 +1,7 @@
 name: Pitest
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches: '*'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -13,7 +9,6 @@ concurrency:
 
 jobs:
   test:
-    if: github.repository == 'checkstyle/checkstyle'
     strategy:
       matrix:
         profile:
